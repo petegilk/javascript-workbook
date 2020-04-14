@@ -78,84 +78,58 @@
 //   }
 // }
 
-const pigLatin = (plWord)  => {
-  //Declaring variables to split the word, and concat into new variable
-  let firstPart;
-  let secondPart;
-  let newWord;
-  let scrubWord = plWord.toLowerCase().split("");
-  //Function that finds the first vowel
-  const isVowel = (word) => {
-    for (let i=0;i<word.length;i++) {
-      if (word[0] === "a" || word[0] === "e" || 
-      word[0] === "i" || word[0] === "o" || word[0] === "u") {
-        newWord = scrubWord.join("") + "yay";
-      } else if (word[i] === "i" || word[i] === "a" || 
-      word[i] === "e" || word[i] === "o" || word[i] === "u") {
-        firstPart = word.slice(0, [i]);
-        firstPart = firstPart.join("");
-        secondPart = word.slice([i], word.length);
-        secondPart = secondPart.join("");
-        newWord = secondPart + firstPart + "ay";
-        break;
-      }
-    }
-  }
-  isVowel(scrubWord);
-  return newWord;
-  console.log(newWord);
-}
-
-pigLatin("Table");
 
 
 
 
-
-
-
-
-
-// let firstpart;
-
-// function pigLatin (plWord) {
-  
-//   let secondpart;
-//   let newword;
-//   let scrub = plWord.toLowerCase().split("");
-//   console.log(plWord);
-//   function isVowel (word) {
-//     console.log(word);
-//     // Test within for loop if first letter is vowel, by if(word[i].indexOf === 0)
+// const pigLatin = (plWord)  => {
+//   //Declaring variables to split the word, and concat into new variable
+//   let firstPart;
+//   let secondPart;
+//   let newWord;
+//   let scrubWord = plWord.toLowerCase().split("");
+//   //Function that finds the first vowel
+//   const isVowel = (word) => {
 //     for (let i=0;i<word.length;i++) {
-//       if (word[i] === "i" || word[i] === "a" || 
+//       if (word[0] === "a" || word[0] === "e" || 
+//       word[0] === "i" || word[0] === "o" || word[0] === "u") {
+//         newWord = scrubWord.join("") + "yay";
+//       } else if (word[i] === "i" || word[i] === "a" || 
 //       word[i] === "e" || word[i] === "o" || word[i] === "u") {
-//         firstpart = word.slice(0, [i]);
-//         firstpart = firstpart.join("");
-//         console.log(firstpart);
-
-//         break;
+//         firstPart = word.slice(0, [i]);
+//         firstPart = firstPart.join("");
+//         secondPart = word.slice([i], word.length);
+//         secondPart = secondPart.join("");
+//         newWord = secondPart + firstPart + "ay";
+        
+//       } else {
+//         newWord = plWord + "yay";
 //       }
 //     }
 //   }
-//   isVowel(scrub);
+//   isVowel(scrubWord);
+//   return newWord;
+//   console.log(newWord);
 // }
 
-// pigLatin("CHICKEN");
+// pigLatin("Table");
+
+
+
 
 
 
 //think about how you would access the age property of the second element, Zuke in the friends array below.
-const user = {
-  name: 'Keith',
-  friends: [{name: 'Meghan', age: '27'}, {name: 'Zuke', age: '3'}],
-  talk: function(name2) {
-    console.log("Hello " + name2);
-  }
-}
+// const user = {
+//   name: 'Keith',
+//   friends: [{name: 'Meghan', age: '27'}, {name: 'Zuke', age: '3'}],
+//   talk: function(name2) {
+//     console.log("Hello " + name2);
+//   }
+// }
 
-console.log(user.friends[1]["name"]);
-console.log(user.talk("Peter"));
+// console.log(user.friends[1]["name"]);
+// console.log(user.talk("Peter"));
 
 
 // function fizzbuzz() {
@@ -188,3 +162,75 @@ console.log(user.talk("Peter"));
 //   }
 //   console.log(value);
 // }
+
+
+//Read the first word, make it the longest word candidate
+//Read the next word, compare it to the candidate
+//If the next word is longer, replace the current candidate with that one
+//Repeat steps 2 and 3 until finished
+//Longest word candidate is declared longest word in book
+
+
+
+
+function longestString(sentence) {
+  let sentenceArr = sentence.trim().split(" ");
+  let longestCandidate = sentenceArr[0];
+  for(let i=1; i< sentenceArr.length; i++) {
+    let currentWord = sentenceArr[i];
+    if (currentWord.length > longestCandidate.length) {
+      longestCandidate = currentWord;
+    }
+  }
+  return longestCandidate;
+}
+
+console.log(longestString("The lazy dog jumped over the brown cow"));
+
+
+
+
+
+let numsArr = [1,2,3,4,5];
+function longestNumber(numbersArr) {
+  let currentLongest = numbersArr[0]
+  for (let i=1; i<numbersArr.length; i++) {
+    let currentNum = numbersArr[i];
+    if (currentNum > currentLongest) {
+      currentLongest = currentNum;
+    }
+  }
+  return currentLongest;
+}
+
+console.log(longestNumber(numsArr));
+
+
+
+
+let board = [
+  ['X', 'X', 'X'],
+  [' ', ' ', ' '],
+  [' ', ' ', ' ']
+]
+
+function checkWin() {
+  for (let i=0; i<=2; i++) {
+    for(let a=0; a<=2; a++) {
+      if (board[i][a] === "X" && board[i][a] === "X" && board[i][a] === "X") {
+        console.log("WIN");
+        console.log(board[0]);
+        console.log(board[1]);
+        console.log(board[2]);
+        break;
+      } else {
+        console.log("LOSE");
+        break;
+      }
+    }
+  }
+}
+
+
+
+checkWin();

@@ -26,10 +26,11 @@ function printBoard() {
 // Should return true if player won on any row
 function horizontalWin() {
   for (let i=0; i <= 2; i++) {
-    if (board[i][0] === "X" && board[i][1] === "X" && board[i][2] === "X") {
-      return true;
-    } else if (board[i][0] === "O" && board[i][1] === "O" && board[i][2] === "O") {
-      return true;
+    for (let a=0; a <=2; a++) {
+      if (board[i][a] === "X" && board[i][a] === "X" && board[i][a] === "X") {
+        return true;
+        break;
+      }
     }
   }
 }
@@ -37,17 +38,33 @@ function horizontalWin() {
 
 // Should return true if player won on any column
 function verticalWin() {
-  // Your code here
+  for (let i=0; i <= 2; i++) {
+    for (let a=0; a <=2; a++) {
+      if (board [a][i] === "X" && board[a][i] === "X" && board[a][i]) {
+        return true;
+        break;
+      }
+    }
+  }
 }
 
 // Should return true if player won on any diagonal
 function diagonalWin() {
-  // Your code here
+  for (let i=0; i <= 2; i++) {
+    if (board[i][i] === "X") {
+
+    }
+  }
 }
 
 // Should return true if any above functions return true
 function checkForWin() {
-  // Your code here
+  horizontalWin();
+  verticalWin();
+  diagonalWin();
+  if (horizontalWin() === true || verticalWin() === true || diagonalWin() === true) {
+    return true;
+  }
 }
 
 function ticTacToe(row, column) {

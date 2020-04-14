@@ -19,16 +19,21 @@ function printStacks() {
   console.log("c: " + stacks.c);
 }
 
-function movePiece() {
+//move the pieces
+function movePiece(startStack, endStack) {
   // Your code here
 
 }
 
-function isLegal() {
+//should return true or false
+//depending on if the move is legal
+function isLegal(startStack, endStack) {
   // Your code here
 
 }
 
+//return true if all the discs have been 
+//moved to tower b or c
 function checkForWin() {
   // Your code here
 
@@ -37,6 +42,8 @@ function checkForWin() {
 function towersOfHanoi(startStack, endStack) {
   // Your code here
 
+  let fromStack = stacks[startStack];
+  let toStack = stack[endStack];
 }
 
 function getPrompt() {

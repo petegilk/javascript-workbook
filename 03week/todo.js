@@ -1,16 +1,43 @@
 'use strict'
 
+//when "Add" button is clicked, append text to
+//bottom of the list
 let addButton = document.querySelector('#addbutton');
 addButton.addEventListener('click', function(){
   console.log("Clicked add button");
-  let newLi = document.querySelector('.userinput').value;
-  document.createElement('li');
-  document.createElement('span').innerText(newLi);
+  let inputElement = document.querySelector('.userinput');
+  let todoText = inputElement.value;
+  inputElement.value = "";
+
+  //create an li element
+  let li = document.createElement('li');
+  
+  //create a span element
+  let span = document.createElement('span');
+  //update inner text of the span element
+  span.innerText = todoText;
+
+  //create a delete button
+  let deleteButton = document.createElement('button');
+  deleteButton.innerText = 'delete';
+  //add a class to the delete button
+  deleteButton.classList.add('delete');
+
+  //add the li to the bottom of the ul element
+  let ul = document.querySelector('ul');
+  ul.appendChild(li);
+
+  //add the span and delete button as
+  //children of the new li
+  li.appendChild(span);
+  setupSpanEvent(span);
+  li.appendChild(deleteButton);
+  setupDeleteButton(deleteButton);
 });
 
 
 
-let allDeleted = document.querySelectorAll('.delete');
+let allDeleted = document.querySelectorAll('.deletebutton');
 for (let i=0; i < allDeleted.length; i++) {
   let deleteButton = allDeleted[i];
   setupDeleteButton(deleteButton);
@@ -18,7 +45,7 @@ for (let i=0; i < allDeleted.length; i++) {
 
 function setupDeleteButton(deleteButton) {
   deleteButton.addEventListener('click', function(){
-    console.log("delete got clicked, parent is", deleteButton.parentElement);
+    console.log("delete got clicked; parent is", deleteButton.parentElement);
     let parentLi = deleteButton.parentElement;
     parentLi.remove();
   });
