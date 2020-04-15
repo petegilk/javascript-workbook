@@ -172,65 +172,71 @@
 
 
 
+//returns the longest word in a string
+// function longestString(sentence) {
+//   let sentenceArr = sentence.trim().split(" ");
+//   let longestCandidate = sentenceArr[0];
+//   for(let i=1; i< sentenceArr.length; i++) {
+//     let currentWord = sentenceArr[i];
+//     if (currentWord.length > longestCandidate.length) {
+//       longestCandidate = currentWord;
+//     }
+//   }
+//   return longestCandidate;
+// }
 
-function longestString(sentence) {
-  let sentenceArr = sentence.trim().split(" ");
-  let longestCandidate = sentenceArr[0];
-  for(let i=1; i< sentenceArr.length; i++) {
-    let currentWord = sentenceArr[i];
-    if (currentWord.length > longestCandidate.length) {
-      longestCandidate = currentWord;
-    }
-  }
-  return longestCandidate;
-}
-
-console.log(longestString("The lazy dog jumped over the brown cow"));
-
-
-
-
-
-let numsArr = [1,2,3,4,5];
-function longestNumber(numbersArr) {
-  let currentLongest = numbersArr[0]
-  for (let i=1; i<numbersArr.length; i++) {
-    let currentNum = numbersArr[i];
-    if (currentNum > currentLongest) {
-      currentLongest = currentNum;
-    }
-  }
-  return currentLongest;
-}
-
-console.log(longestNumber(numsArr));
+// console.log(longestString("The lazy dog jumped over the brown cow"));
 
 
 
 
-let board = [
-  ['X', 'X', 'X'],
-  [' ', ' ', ' '],
-  [' ', ' ', ' ']
-]
+//returns the highest number in an array
+// let numsArr = [1,2,3,4,5];
+// function longestNumber(numbersArr) {
+//   let currentLongest = numbersArr[0]
+//   for (let i=1; i<numbersArr.length; i++) {
+//     let currentNum = numbersArr[i];
+//     if (currentNum > currentLongest) {
+//       currentLongest = currentNum;
+//     }
+//   }
+//   return currentLongest;
+// }
 
-function checkWin() {
-  for (let i=0; i<=2; i++) {
-    for(let a=0; a<=2; a++) {
-      if (board[i][a] === "X" && board[i][a] === "X" && board[i][a] === "X") {
-        console.log("WIN");
-        console.log(board[0]);
-        console.log(board[1]);
-        console.log(board[2]);
-        break;
-      } else {
-        console.log("LOSE");
-        break;
-      }
-    }
-  }
-}
+// console.log(longestNumber(numsArr));
 
 
 
-checkWin();
+
+
+
+// let board = [
+//   ['X', 'X', 'X'],
+//   [' ', ' ', ' '],
+//   [' ', ' ', ' ']
+// ]
+
+// function checkWin() {
+//   for (let i=0; i<=2; i++) {
+//     for(let a=0; a<=2; a++) {
+//       if (board[i][a] === "X" && board[i][a] === "X" && board[i][a] === "X") {
+//         console.log("WIN");
+//         console.log(board[0]);
+//         console.log(board[1]);
+//         console.log(board[2]);
+//         break;
+//       } else {
+//         console.log("LOSE");
+//         break;
+//       }
+//     }
+//   }
+// }
+
+
+
+// checkWin();
+
+
+
+

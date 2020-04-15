@@ -29,7 +29,6 @@ function horizontalWin() {
     for (let a=0; a <=2; a++) {
       if (board[i][a] === "X" && board[i][a] === "X" && board[i][a] === "X") {
         return true;
-        break;
       }
     }
   }
@@ -42,7 +41,6 @@ function verticalWin() {
     for (let a=0; a <=2; a++) {
       if (board [a][i] === "X" && board[a][i] === "X" && board[a][i]) {
         return true;
-        break;
       }
     }
   }
@@ -59,10 +57,11 @@ function diagonalWin() {
 
 // Should return true if any above functions return true
 function checkForWin() {
-  horizontalWin();
-  verticalWin();
-  diagonalWin();
-  if (horizontalWin() === true || verticalWin() === true || diagonalWin() === true) {
+  if (horizontalWin() === true) {
+    return true;
+  } else if (verticalWin() === true) {
+    return true;
+  } else if (diagonalWin() === true) {
     return true;
   }
 }
@@ -71,9 +70,19 @@ function ticTacToe(row, column) {
   // Your code here
 
   // set value on that box
+  if (playerTurn === "X") {
+    board[row][column] = "X";
+    checkForWin();
+    playerTurn === "O"
+  } else if (playerTurn === "O") {
+    board[row][column] === "O";
+    checkForWin();
+    playerTurn === "X"
+  }
   // check if the player won
   // if they won say congrats
   // switch variable to player 2
+
 }
 
 function getPrompt() {
