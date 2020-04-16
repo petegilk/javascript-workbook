@@ -33,7 +33,7 @@ function horizontalWin() {
     }
   }
 }
-
+horizontalWin();
 
 // Should return true if player won on any column
 function verticalWin() {
@@ -45,6 +45,7 @@ function verticalWin() {
     }
   }
 }
+verticalWin();
 
 // Should return true if player won on any diagonal
 function diagonalWin() {
@@ -72,14 +73,16 @@ function ticTacToe(row, column) {
   // set value on that box
   if (playerTurn === "X") {
     board[row][column] = "X";
-    checkForWin();
-    playerTurn === "O"
+    playerTurn === "O";
   } else if (playerTurn === "O") {
     board[row][column] === "O";
-    checkForWin();
-    playerTurn === "X"
+    playerTurn === "X";
   }
+
   // check if the player won
+  if (checkForWin() === true) {
+    console.log("Congrats!");
+  }
   // if they won say congrats
   // switch variable to player 2
 

@@ -1,17 +1,19 @@
 'use strict'
-console.log("Script working");
 
 let userInput = document.querySelector("#userInput");
 let inputText = userInput.value;
 let translateButton = document.querySelector("#translateButton");
 let translationOutput = document.querySelector('#output');
+let newWord;
 console.log(inputText);
+
+
 //Pig latin translation script
 const pigLatin = (plWord)  => {
   //Declaring variables to split the word, and concat into new variable
   let firstPart;
   let secondPart;
-  let newWord;
+
   let scrubWord = plWord.toLowerCase().split("");
   //Function that finds the first vowel
   const isVowel = (word) => {
@@ -31,10 +33,11 @@ const pigLatin = (plWord)  => {
     }
     console.log(newWord);
     return newWord;
+    
   }
   isVowel(scrubWord);
-  // return newWord;
+  
 }
 
 translateButton.addEventListener('click', pigLatin(inputText));
-translationOutput.innerText = pigLatin(inputText);
+translationOutput.innerText = newWord;
