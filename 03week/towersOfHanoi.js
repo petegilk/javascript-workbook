@@ -19,24 +19,49 @@ function printStacks() {
   console.log("c: " + stacks.c);
 }
 
-function movePiece() {
-  // Your code here
+//move the pieces
+function movePiece(startStack, endStack) {
+  //filter for capital letters, and spaces
+  let startMove = startStack.toLowerCase().trim();
+  let endMove = endStack.toLowerCase().trim();
+  
+  //storing popped value of stacks array into variable
+  let currentPiece = stacks[startMove].pop();
 
+  //pushing popped variable into new array
+  stacks[endMove].push(currentPiece);
 }
 
-function isLegal() {
-  // Your code here
-
+//should return true or false
+//depending on if the move is legal
+function isLegal(startStack, endStack) {
+  if (startStack.length === 0) {
+    return false;
+  }
+  if (endStack.length === 0) {
+    return true;
+  }
+  for (let i=0; i<=stacks[endStack].length ; i++) {
+    if (currentPiece > stacks[endStack][i]) {
+      return false;
+    } else if (currentPiece < stacks[endStack][i]) {
+      return true;
+    }
+  }
 }
 
+//return true if all the discs have been 
+//moved to tower b or c
 function checkForWin() {
   // Your code here
 
 }
 
 function towersOfHanoi(startStack, endStack) {
-  // Your code here
-
+  
+  let fromStack = stacks[startStack];
+  let toStack = stacks[endStack];
+  movePiece(toStack, fromStack);
 }
 
 function getPrompt() {
