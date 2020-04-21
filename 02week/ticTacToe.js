@@ -33,7 +33,6 @@ function horizontalWin() {
     }
   }
 }
-horizontalWin();
 
 // Should return true if player won on any column
 function verticalWin() {
@@ -45,7 +44,7 @@ function verticalWin() {
     }
   }
 }
-verticalWin();
+
 
 // Should return true if player won on any diagonal
 function diagonalWin() {
@@ -58,14 +57,10 @@ function diagonalWin() {
 
 // Should return true if any above functions return true
 function checkForWin() {
-  if (horizontalWin() === true) {
+  if (horizontalWin() === true || verticalWin() === true || diagonalWin() === true) {
     return true;
-  } else if (verticalWin() === true) {
-    return true;
-  } else if (diagonalWin() === true) {
-    return true;
-  }
-}
+  } 
+
 
 function ticTacToe(row, column) {
   // Your code here

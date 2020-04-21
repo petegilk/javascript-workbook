@@ -2,15 +2,17 @@
 
 let userInput = document.querySelector("#userInput");
 let inputText = userInput.value;
-
-
-
+let translationOutput = document.querySelector('#output');
+let resetButton = document.querySelector('#resetButton');
+resetButton.addEventListener('click', function(){
+  userInput.value = '';
+  translationOutput.value = '';
+});
 
 
 translateButton.addEventListener('click', function() {
   let translateButton = document.querySelector("#translateButton");
-  let translationOutput = document.querySelector('#output');
-  let newWord;
+  
   console.log(inputText);
 
   //Pig latin translation script
@@ -18,8 +20,8 @@ translateButton.addEventListener('click', function() {
     //Declaring variables to split the word, and concat into new variable
     let firstPart;
     let secondPart;
-
     let scrubWord = plWord.toLowerCase().split("");
+    let newWord;
     //Function that finds the first vowel
     const isVowel = (word) => {
       for (let i=0;i<word.length;i++) {
@@ -37,11 +39,12 @@ translateButton.addEventListener('click', function() {
         }
       }
       console.log(newWord);
-      
+      translationOutput.value = newWord;
     }
     isVowel(scrubWord);
     return newWord;
+    
   }
   pigLatin(inputText);
-  translationOutput.innerText = newWord;
+
 });

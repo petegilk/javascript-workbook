@@ -21,15 +21,33 @@ function printStacks() {
 
 //move the pieces
 function movePiece(startStack, endStack) {
-  // Your code here
+  //filter for capital letters, and spaces
+  let startMove = startStack.toLowerCase().trim();
+  let endMove = endStack.toLowerCase().trim();
+  
+  //storing popped value of stacks array into variable
+  let currentPiece = stacks[startMove].pop();
 
+  //pushing popped variable into new array
+  stacks[endMove].push(currentPiece);
 }
 
 //should return true or false
 //depending on if the move is legal
 function isLegal(startStack, endStack) {
-  // Your code here
-
+  if (startStack.length === 0) {
+    return false;
+  }
+  if (endStack.length === 0) {
+    return true;
+  }
+  for (let i=0; i<=stacks[endStack].length ; i++) {
+    if (currentPiece > stacks[endStack][i]) {
+      return false;
+    } else if (currentPiece < stacks[endStack][i]) {
+      return true;
+    }
+  }
 }
 
 //return true if all the discs have been 
@@ -40,10 +58,10 @@ function checkForWin() {
 }
 
 function towersOfHanoi(startStack, endStack) {
-  // Your code here
-
+  
   let fromStack = stacks[startStack];
-  let toStack = stack[endStack];
+  let toStack = stacks[endStack];
+  movePiece(toStack, fromStack);
 }
 
 function getPrompt() {

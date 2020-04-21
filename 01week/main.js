@@ -239,4 +239,173 @@
 
 
 
+// TOWERS OF HANOI STACK
+let stacks = {
+  a: [4, 3, 2, 1],
+  b: [],
+  c: []
+};
 
+//MOVING PIECES BY CALLING FUNCTION 'MOVEPIECE'
+function movePiece(startStack, endStack) {
+  let currentPiece = stacks[startStack].pop();
+  stacks[endStack].push(currentPiece);
+  console.log(stacks, "Current piece: " + currentPiece);
+  currentPiece = null;
+  console.log(currentPiece);
+
+  // for (let i=0; i<=stacks[endStack].length ; i++) {
+  //   let nextMove = stacks[endStack]
+  //   if (currentPiece > nextMove[i]) {
+  //     console.log('false');
+  //   } else if (currentPiece < nextMove[i]) {
+  //     console.log('true');
+  //   }
+  // }
+}
+movePiece('a', 'b');
+
+
+// FOR EACH EXAMPLE
+
+let s1 = {
+  name: "Mike",
+  avg: 95
+}
+
+let s2 = {
+  name: "Susie",
+  avg: 90
+}
+
+let s3 = {
+  name: "Terry",
+  avg: 84
+}
+
+let students = [s1,s2,s3];
+
+students.forEach(function(element, index) {
+  console.log(element.name);
+});
+
+
+
+// FILTER EXAMPLE
+
+// What's the contract
+// creates a new array that includes all
+// elements that pass the condition
+// test is implemented by callback
+
+// students grade average has to be 90 and above
+// if students average is greater or equal to 90
+let honorRollFilter = function(element, index){
+  if(element.avg >= 90) {
+    console.log(element.name, "made the honor roll");
+    return true;
+  } else {
+    console.log(element.name, "did not make the honor roll");
+    return false
+  }
+};
+
+let honorRoll = students.filter(honorRollFilter);
+
+
+
+
+//create a new array populated with the results
+// of calling the provided function
+let mapFunction = function(element, index) {
+  // convert student name and avg to sentence
+
+  return `${element.name}'s grade is a ${element.avg}`;
+}
+
+// i want to map each student to just their grade
+let gradeMapper = (element, index) => {
+  return element.avg;
+}
+
+
+
+let descriptions = students.map(mapFunction);
+console.log(descriptions);
+
+let justGrade = students.map(gradeMapper);
+console.log(justGrade);
+
+
+let secretPatt = ['a', 'a', 'f', 'w'];
+
+
+//this function should return the number of
+//exact matches between inputPattern, and secretPattern
+function compareTwo(inputPatt) {
+  let exactMatch = 0;
+  console.log("About to start the loop");
+  console.log("Going to compare ", secretPatt, " and ", inputPatt );
+  for (let i=0; i<=secretPatt.length; i++) {
+    console.log('comparing both at position ', i);
+    console.log('checking to see if ', secretPatt[i], ' matches ', inputPatt[i]);
+    if (secretPatt[i] == inputPatt[i]) {
+      console.log('They match!');
+      exactMatch++;
+    } else {
+      console.log("They do no match!");
+    }
+  }
+  //find the number of characters that are a partial match
+  let partialMatch;
+
+  return `${exactMatch} - ${partialMatch}`;
+}
+
+
+
+
+
+console.log("--------REDUCE TESTS---------");
+
+
+let numbers = [3, 73, 21, 19, 4];
+
+let max = numbers.reduce(function(prev, curr, index){
+  console.log("about to compare", prev, " to ", curr);
+  if (prev > curr) {
+    return prev;
+  } else {
+    console.log("sending curr ", curr, " to the next round");
+    return curr;
+  }
+});
+
+console.log("the max number is", max);
+
+let highestGradeStudent = students.reduce(function(prev, curr, index) {
+  if (prev.avg > curr.avg) {
+    return prev;
+  } else {
+    return curr;
+  }
+});
+
+console.log(highestGradeStudent)
+
+let sum = numbers.reduce(function(prev, curr){
+  return prev+curr;
+});
+
+console.log(sum);
+
+let sumGrades = students.reduce(function(prev, curr, index) {
+  if(index == 0) {
+    return prev.avg + curr.avg;
+  } else {
+    return prev + curr.avg;
+  }
+  
+});
+
+console.log(sumGrades);
