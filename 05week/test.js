@@ -4,32 +4,32 @@
 // and method that returns the perimeter
 
 
-class rectangle {
-  constructor(a, b) {
-    this.a = a;
-    this.b = b;
-  }
+// class rectangle {
+//   constructor(a, b) {
+//     this.a = a;
+//     this.b = b;
+//   }
 
-  //returns the perimeter
-  perimeter() {
-    return 2 * (this.a + this.b);
-  }
+//   //returns the perimeter
+//   perimeter() {
+//     return 2 * (this.a + this.b);
+//   }
 
-  //returns the area
-  area() {
-    return this.a * this.b;
-  }
+//   //returns the area
+//   area() {
+//     return this.a * this.b;
+//   }
 
-}
+// }
 
-let x = new rectangle(3, 6);
-let y = new rectangle(10, 42);
+// let x = new rectangle(3, 6);
+// let y = new rectangle(10, 42);
 
-console.log("The perimeter of", x , " is ", x.perimeter());
-console.log("The area of", x, " is ", x.area());
+// console.log("The perimeter of", x , " is ", x.perimeter());
+// console.log("The area of", x, " is ", x.area());
 
-console.log("The perimeter of ", y , "is" , y.perimeter());
-console.log("The area of", y , " is ", y.area());
+// console.log("The perimeter of ", y , "is" , y.perimeter());
+// console.log("The area of", y , " is ", y.area());
 
 
 
@@ -141,3 +141,4 @@ let room2 = new homeRoom("102B", "Mrs Maria");
 room1.students.push(mike);
 
 console.log(room1.description());
+
