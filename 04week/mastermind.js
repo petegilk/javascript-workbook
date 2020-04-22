@@ -34,7 +34,7 @@ function generateHint() {
 
 function mastermind(guess) {
   solution = 'abcd'; // Comment this out to generate a random solution
-  // your code here
+  
 }
 
 
