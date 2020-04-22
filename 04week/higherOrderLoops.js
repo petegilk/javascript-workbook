@@ -2,7 +2,7 @@
 
 // Use a do...while loop to console.log 
 // the numbers from 1 to 1000.
-let x = 1000;
+let x = 0;
 do {
   console.log(x);
   x++;
