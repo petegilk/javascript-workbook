@@ -28,13 +28,37 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-function generateHint() {
-  // your code here
+// takes one argument, 'hint'
+// should check for similar values,
+// and exact positioning
+function generateHint(guess) {
+
+  let solutionArray = solution.split('');
+  let guessArray = guess.split('');
+  let correctLetterLocations = 0;
+  let correctLetters = 0;
+
+  for (let i=0; i<solutionArray.length; i++) {
+    // comparing solution/guess arrays for exact index value matches
+    if (solutionArray[i] === guessArray[i]) {
+      correctLetterLocations++;
+      solutionArray[i] = null;
+    }
+    // for (let a=0; a<solutionArray.length; a++) {
+    // } 
+  }
 }
 
+// takes one argument 'guess', check for a match with solution
+// if no match, guess is passed to generateHint() function
 function mastermind(guess) {
   solution = 'abcd'; // Comment this out to generate a random solution
-  
+  if (guess === solution) {
+    console.log("You guessed it correctly!");
+  } else {
+    generateHint(guess);
+  }
+
 }
 
 

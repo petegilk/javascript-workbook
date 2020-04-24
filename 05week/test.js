@@ -1,42 +1,44 @@
-// create a class that represents a rectangle
-// constructor to take in the length of 2 sides
-// create method that returns the area
-// and method that returns the perimeter
-
-
-// class rectangle {
-//   constructor(a, b) {
-//     this.a = a;
-//     this.b = b;
-//   }
-
-//   //returns the perimeter
-//   perimeter() {
-//     return 2 * (this.a + this.b);
-//   }
-
-//   //returns the area
-//   area() {
-//     return this.a * this.b;
-//   }
-
-// }
-
-// let x = new rectangle(3, 6);
-// let y = new rectangle(10, 42);
-
-// console.log("The perimeter of", x , " is ", x.perimeter());
-// console.log("The area of", x, " is ", x.area());
-
-// console.log("The perimeter of ", y , "is" , y.perimeter());
-// console.log("The area of", y , " is ", y.area());
-
-
-
-
 'use strict'
 
+// solutionArray.forEach(function(curr, index, arr){
+//   for (let i=0; i< guessArray.length; i++) {
+//     if (guessArray[i] === arr[index]) {
+//       perfectMatch++;
+//       console.log("There are", perfectMatch, "perfect matches");
+//     }
+//   }
+// });
 
+
+let solution = 'abcd';
+let generateHint = (guess) => {
+  let solutionArray = solution.split('');
+  let guessArray = guess.split('');
+  let correctLetters = 0;
+  let perfectMatch = 0;
+  for (let i=0;i<solution.length;i++) {
+    for (let a=0;a<solution.length;a++) {
+      if (solutionArray[i] === guessArray[a]) {
+        console.log(solutionArray[i], guessArray[a]);
+      }
+    }
+  }
+  
+}
+
+let mastermind = (guess) => {
+  // let solution = 'abcd';
+  if (guess === solution) {
+    console.log(`${guess} and ${solution} are the same`);
+  } else {
+    generateHint(guess);
+  }
+}
+mastermind("aecf");
+
+
+
+console.log("----------Break----------");
 // class Person {
 //   constructor(name, age, height){
 //     this.myName = name;
@@ -83,7 +85,7 @@
 
 
 
-// this is the sand in for crewmember
+// this is the stand in for crewmember
 // student does not have home room when created
 class student {
   constructor(name, gradeLevel) {
@@ -142,3 +144,113 @@ room1.students.push(mike);
 
 console.log(room1.description());
 
+
+
+
+console.log("----------Break----------");
+
+
+
+
+
+// vehicle simulation
+// want a class to represent our vehicle
+// vehicle should have some attributes
+// one of them should be MPG attribute
+// we should be able to add gas to our car
+// we should be able to drive for a certain distance
+// we should be able to query it for the range left
+
+class Vehicle{
+  constructor(mpg, color, engineType, gasTankCapacity) {
+    this.mpg = mpg;
+    this.color = color;
+    this.engineType = engineType;
+    this.gasTankCapacity = gasTankCapacity; // holds max capacity of tank in gallons
+    this.fuelLevel = 0; // holds the current fuel level in gallons
+  }
+
+  // gallons: number of gallons to add to the tank
+  fuelUp(gallons) {
+    this.fuelLevel = this.fuelLevel + gallons;
+
+    if (this.fuelLevel > this.gasTankCapacity) {
+      this.fuelLevel = this.gasTankCapacity;
+    } else if (this.fuelLevel < 0) {
+      this.fuelLevel = 0;
+    }
+  }
+
+  // the number of miles you're driving
+  // want to update the fuel level based on the number of miles driven
+  drive(miles) {
+    console.log("Inside the vehicle method");
+    // distance/mpg gives us the amount of gas consumed
+    // know that i have the amount of gas consumed, i can subtract it from fuel level
+
+    let gallonsConsumed = miles/this.mpg;
+    this.fuelLevel = this.fuelLevel - gallonsConsumed;
+    if (this.fuelLevel < 0) {
+      this.fuelLevel = 0;
+    }
+
+  }
+}
+
+// my truck class
+// should have a bedsize
+// trucks only come in color white
+// should override the drive method, such that if i am carrying cargo,
+//    my mpg is reduced by 15%
+
+class Truck extends Vehicle {
+  constructor (mpg, engineType, gasTankCapacity, bedsize) {
+    super(mpg, 'white', engineType, gasTankCapacity);
+    this.bedsize = bedsize;
+    this.hasCargo = false;
+  }
+  loadUp() {
+    this.hasCargo = true;
+  }
+  unLoad() {
+    this.hasCargo = false;
+  }
+
+  drive(miles) {
+    console.log("inside the truck method");
+    // distance/mpg gives us the amount of gas consumed
+    // know that i have the amount of gas consumed, i can subtract it from fuel level
+
+    if (this.hasCargo) {
+
+    }
+    let gallonsConsumed;
+    if (this.hasCargo) {
+      gallonsConsumed = miles/(this.mpg * .85);
+    } else {
+      gallonsConsumed = miles/this.mpg;
+    }
+    this.fuelLevel = this.fuelLevel - gallonsConsumed;
+    if (this.fuelLevel < 0) {
+      this.fuelLevel = 0;
+    }
+
+  }
+
+}
+
+
+
+let myJeep = new Vehicle(15, "Blue,", "5.3 liter", 24);
+myJeep.fuelUp(10);
+myJeep.drive(30, 1);
+
+//console.log(myJeep.fuelLevel); // fuel level should be 8
+myJeep.fuelUp(40);
+//console.log(myJeep.fuelLevel); // fuel level should be 24 gallons
+
+
+let myTruck = new Truck(30, "Electric", 25, "long");
+myTruck.fuelUp(25);
+myTruck.drive(4);
+console.log(myTruck.fuelLevel);
