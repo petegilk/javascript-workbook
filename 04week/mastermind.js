@@ -7,7 +7,7 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
-let board = [];
+let board = 10;
 let solution = '';
 let letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
 
@@ -37,6 +37,8 @@ function generateHint(guess) {
   let guessArray = guess.split('');
   let correctLetterLocations = 0;
   let correctLetters = 0;
+  let targetIndex;
+  let hintsArr = [];
 
   for (let i=0; i<solutionArray.length; i++) {
     // comparing solution/guess arrays for exact index value matches
@@ -44,14 +46,36 @@ function generateHint(guess) {
       correctLetterLocations++;
       solutionArray[i] = null;
     }
-    // for (let a=0; a<solutionArray.length; a++) {
-    // } 
+
+    // I think i need to modify this section,
+    // as it's returning correctletters as 0.
+    // i'll keep working on it
+    for (let a=0; a<solutionArray.length; a++) {
+      if (solutionArray.includes(guessArray[a])) {
+        targetIndex = guessArray.indexOf(a);
+        if (targetIndex > -1) {
+          correctLetters++;
+          solutionArray[a] = null;
+        }
+        
+      }
+      
+    }
+
   }
+  
+  console.log("Correct letters:", correctLetters);
+  console.log("Correct letters in exact location", correctLetterLocations);
+  board--;
+  console.log(board, 'guesses left!');
 }
+
 
 // takes one argument 'guess', check for a match with solution
 // if no match, guess is passed to generateHint() function
 function mastermind(guess) {
+  let hint;
+
   solution = 'abcd'; // Comment this out to generate a random solution
   if (guess === solution) {
     console.log("You guessed it correctly!");
@@ -64,9 +88,13 @@ function mastermind(guess) {
 
 function getPrompt() {
   rl.question('guess: ', (guess) => {
-    mastermind(guess);
-    printBoard();
-    getPrompt();
+    if (board > 1) {
+      mastermind(guess);
+      printBoard();
+      getPrompt();
+    } else {
+      console.log('Game over, try again!');
+    }
   });
 }
 
