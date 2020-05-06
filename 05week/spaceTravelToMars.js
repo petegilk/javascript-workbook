@@ -9,23 +9,28 @@ let jobTypes = {
   programmer: 'Any Ship!'
 };
 
-// Your code here
-
 // create a crew member class
 // constructor should take in: name, job, special skill
 // when a crew member is created, they're not associated with any ship
 // have an attribute "ship", this is the ship they're in
 
-class crewMember {
-  constructor() {
-
+class CrewMember {
+  constructor(name, job, specialSkill) {
+    this.name = name;
+    this.job = job;
+    this.specialSkill = specialSkill;
+    this.ship = null;
   }
 
   // this method should add THIS crewmember to the ship being passed in
   // !! an entire ship instance is passed in, not just the name
   // !! the entire crewmember is added to the ships array of crew
-  enterShip() {
-
+  
+  enterShip(ship) {
+    if (this.ship === null) {
+      this.ship = ship;
+      ship.crew.push(this);
+    }
   }
 
 }
@@ -39,16 +44,23 @@ class crewMember {
 //    
 //    otherwise it should return "can't perform a mission yet"
 
-class ship{
-  constructor() {
-
+class Ship{
+  constructor(name, type, ability) {
+    this.name = name;
+    this.type = type;
+    this.ability = ability;
+    this.crew = [];
   }
 
   // this method should return the ships ability if there is a crew member
   // whose job matches up with the ships type
   // else should return "Can't perform a mission yet"
   missionStatement() {
-
+    if (this.type == this.crew.job) {
+      return this.ability;
+    } else {
+      return `Can't perform a mission yet.`
+    }
   }
 
 }

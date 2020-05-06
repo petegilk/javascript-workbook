@@ -1,0 +1,91 @@
+'use strict'
+
+// Account Class
+// attributes / fields:
+// - account number // this is passed in to the constructor
+// - owner //this is passed in to the constructor
+// - a list of transactions  // starts of empty
+// methods:
+// - balance(): loop through all the transactions, 
+//   and return the current balance
+//-  addTransaction(payee, amount); // checks to see if the amount is valid (ie cannot debit more than the balance)
+//
+//-  instead of addTransaction():
+//   deposit(amt);
+//   charge(payee, amount)
+//
+
+class BankAccount {
+  constructor(accountNumber, owner) {
+    this.accountNumber = accountNumber;
+    this.owner = owner;
+    this.transactions = [];
+  }
+
+  balance() {
+    if (this.transactions.length > 0) {
+      return this.transactions.reduce((acc, curr) => acc + curr);
+    } else {
+      return `There are ${this.transactions.length} transactions to list.`
+    }
+  }
+
+  deposit(amt) {
+    if (amt < 0) {
+      return `Please enter a valid deposit`
+    } else {
+      this.transactions.push(new Transactions(amt));
+    }
+  }
+
+  charge(payee, amt) {
+
+  }
+
+}
+
+// Transaction Class
+// - amount (can be either positive or negative) // passed in to constructor
+// - payee // passed in to constructor
+// - date  // auto set in the constructor
+// 
+
+class Transactions {
+  constructor(amount, payee) {
+    let date = new Date();
+    let d = date.getUTCDate();
+    let m = date.getMonth() + 1;
+    let y = date.getFullYear();
+
+    this.amount = amount;
+    this.payee = payee;
+    this.date = `${d}/${m}/${y}`;
+  }
+
+}
+
+
+
+let acct1 = new BankAccount("5553429", "John Doe");
+
+console.log(acct1.accountNumber);  // 5553429
+console.log(acct1.owner); // John Doe
+console.log(acct1.balance()); // 0
+
+acct1.deposit(100)
+console.log(acct1.balance()); // 100
+
+acct1.deposit(-200)  // should not be allowed
+console.log(acct1.balance()); // 100
+
+acct1.charge("Target", 30.50)
+acct1.charge("FreeBirds", 15.15)
+console.log(acct1.balance())  //54.35
+
+acct1.charge("Diamond Shop", 1000) // should not be allowed
+console.log(acct1.balance())  //54.35
+
+acct1.charge("Target", -20) //refund
+console.log(acct1.balance())  //74.35
+
+
