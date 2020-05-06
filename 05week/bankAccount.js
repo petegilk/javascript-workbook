@@ -24,7 +24,11 @@ class BankAccount {
 
   balance() {
     if (this.transactions.length > 0) {
-      return this.transactions.reduce((acc, curr) => acc + curr);
+      let currentBalance = 0;
+      for (let i=0; i<this.transactions.length; i++) {
+        currentBalance += this.transactions[i].amount;
+      }
+      return currentBalance;
     } else {
       return `There are ${this.transactions.length} transactions to list.`
     }
@@ -32,6 +36,7 @@ class BankAccount {
 
   deposit(amt) {
     if (amt < 0) {
+      console.log(`Can't deposit a negative number.`);
       return `Please enter a valid deposit`
     } else {
       this.transactions.push(new Transactions(amt));
@@ -39,7 +44,7 @@ class BankAccount {
   }
 
   charge(payee, amt) {
-
+    
   }
 
 }
