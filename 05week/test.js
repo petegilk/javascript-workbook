@@ -1,47 +1,6 @@
 'use strict'
 
 
-
-
-function isARampNumber(number) {
-
-  let string = number.toString();
-  let arr = string.split('');
-  let numsArr = [];
-  let rampNumbers = 0;
-  // Created for loop to convert array of strings to numbers
-  // 
-  for (let j = 0; j<arr.length; j++) {
-    numsArr.push(Number(arr[j]));
-  }
-
-  for(let i = 0; i < numsArr.length; i++) {
-  
-    if (numsArr[i] < numsArr[i + 1]) {
-      rampNumbers++;
-    }
-
-    // if (numsArr[i] > numsArr[i + 1]) {
-    //   rampNumbers = numsArr[i];
-    // }
-  }
-
-  console.log("There are", rampNumbers, "ramp numbers");
-}
-
-console.log(isARampNumber(31));
-console.log(isARampNumber(752));
-console.log(isARampNumber(1278));
-console.log(isARampNumber(1497));
-
-
-
-
-
-
-
-
-
 //1 assignment = 1 unit of work
 //10 assignments = 10 units work
 //100 assignments = 100 work
@@ -125,7 +84,7 @@ console.log(isARampNumber(1497));
 
 
 
-console.log("----------Break----------");
+
 // class Person {
 //   constructor(name, age, height){
 //     this.myName = name;
