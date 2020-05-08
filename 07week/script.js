@@ -12,6 +12,9 @@ let getPosts = function(){
   console.log('inside the posts function, making fetch request');
   fetch('http://jsonplaceholder.typicode.com/posts?_limit=5')
     .then(function(response) {
+      if(!response.ok) {
+        throw Error("Server said no!");
+      }
       console.log('fetch is done', response);
       return response.json()
     })
@@ -19,7 +22,9 @@ let getPosts = function(){
     .then(function(data){
       console.log("Got my data:", data.length);
       data.forEach(updateHtml)
-    });
+    }).catch(function(error) {
+      alert("Something went wrong!");
+    })
 
   console.log('request sent off...');
 }

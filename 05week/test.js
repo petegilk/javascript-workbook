@@ -1,6 +1,58 @@
 'use strict'
 
 
+
+
+
+
+
+
+// -------------Error Handling---------------
+
+// function cook(input) {
+//   if(input.toLowerCase() != input) {
+//     throw Error('I only accept lower case input');
+//   }
+//   return true;
+// }
+
+// function manager(input) {
+//   if (!input) {
+//     return false;
+//   } else if (input.length > 1000) {
+//     return false;
+//   }
+//   try {
+//     let result = cook(input);
+//   } catch(error) {
+//     console.log("Catching an error");
+//     result = false;
+//   }
+//   return result;
+// }
+
+
+// fetch()
+//   .then(res =>) {
+//     if(!res.ok) {
+//       throw Error(res.statusText);
+//     }
+// }
+
+
+
+
+// me ordering
+
+let finalResult = manager('CAPS');
+console.log("My result is:", finalResult);
+
+
+
+
+
+
+
 //1 assignment = 1 unit of work
 //10 assignments = 10 units work
 //100 assignments = 100 work
