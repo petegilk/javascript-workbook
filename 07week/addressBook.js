@@ -27,10 +27,18 @@ function processContacts(contacts) {
   contacts.forEach(function(item, idx){
 
     // Creating button and inner text
+    // creating click function to show more information
     let button = document.createElement('button');
     button.innerText = "More Info";
     button.addEventListener('click', function() {
-      alert("Button clicked!");
+      if (p4.style.display === 'none') {
+        p4.style.display = 'block';
+        button.innerText = 'Hide';
+      } else {
+        p4.style.display = 'none';
+        button.innerText = 'More Info';
+      }
+      
     });
 
     // Selecting list and creating child elements to append
@@ -39,6 +47,8 @@ function processContacts(contacts) {
     let p1 = document.createElement('p');
     let p2 = document.createElement('p');
     let p3 = document.createElement('p');
+    let p4 = document.createElement('p');
+    let bdate = item.dob.date.substring(0, 10);
     let img = document.createElement('img');
     img.setAttribute('src', item.picture.medium);
     
@@ -48,11 +58,14 @@ function processContacts(contacts) {
     li.appendChild(p1);
     li.appendChild(p2);
     li.appendChild(p3);
+    li.appendChild(p4);
     li.appendChild(button);
 
     p1.innerText = `Name: ${item.name.first} ${item.name.last}`;
     p2.innerText = `Phone: ${item.phone}`;
-    p3.innerText = `Address: ${item.location.street.number} ${item.location.street.name} ${item.location.city}, ${item.location.state} ${item.location.postcode}`
+    p3.innerHTML = `Address: ${item.location.street.number} ${item.location.street.name}<br>${item.location.city}, ${item.location.state} ${item.location.postcode}`
+    p4.innerHTML = `Email: ${item.email}<br>Birthday: ${bdate}<br>Age: ${item.dob.age}`
+    p4.style.display = 'none';
     console.log(item);
   });
 
