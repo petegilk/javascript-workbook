@@ -1,10 +1,11 @@
 'use strict'
 
+// Getting addresses when page loads
 window.onload = function() {
   getAddresses();
 }
 
-
+// 
 const getAddresses = function() {
   console.log("Fetching address book");
 

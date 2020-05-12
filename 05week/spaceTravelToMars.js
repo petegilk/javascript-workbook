@@ -56,14 +56,19 @@ class Ship{
   // whose job matches up with the ships type
   // else should return "Can't perform a mission yet"
   missionStatement() {
-    if (this.type == this.crew.job) {
-      return this.ability;
-    } else {
-      return `Can't perform a mission yet.`
+    for (let i=0; i<this.crew.length; i++) {
+      if (this.type == this.crew[i].job) {
+        return `${this.ability}`;
+      } else {
+        return `Can't perform a mission yet.`;
+      }
     }
+
   }
 
 }
+
+
 
 
 //tests
