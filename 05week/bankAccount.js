@@ -30,22 +30,31 @@ class BankAccount {
       }
       return currentBalance;
     } else {
-      return `There are ${this.transactions.length} transactions to list.`
+      return 0;
     }
   }
 
   deposit(amt) {
     if (amt < 0) {
-      console.log(`Can't deposit a negative number.`);
-      return `Please enter a valid deposit`
+      return false;
     } else {
       this.transactions.push(new Transactions(amt));
     }
   }
 
   charge(payee, amt) {
-    
-  }
+    let withdrawal;
+    if (this.balance() < amt) {
+      return false;
+    } else {
+      if (amt > 0) {
+        withdrawal = amt - (amt * 2);
+      } else if (amt < 0) {
+        withdrawal = Math.abs(amt);
+      }
+      this.transactions.push(new Transactions(withdrawal, payee))
+    }
+    }
 
 }
 

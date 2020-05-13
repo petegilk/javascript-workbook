@@ -1,8 +1,64 @@
 'use strict'
 
 
+// recursive fibonacci
+// for n0 = 0
+// for n1 = 1
+// for n(x) = n(x-1) + n(x-2)
+
+function n(x) {
+  if (x==0) {
+    return 0;
+  }
+  if (x==1) {
+    return 1;
+  }
+  return n(x-1)+n(x-2);
+}
+
+// for a given position, calculate the fibonacci numbet at that position
+function recursiveFibonacci(position) {
+
+  if (position == 0) {
+    return 0;
+  }
+  if (position == 1) {
+    return 1;
+  }
+
+  let prev = recursiveFibonacci(position-1);
+  let prevPrev = recursiveFibonacci(position-2);
+  return prev + prevPrev;
+}
+
+// sum(array) = sum(array with one element removed)
+// sum[0-5] = sum[0-4] + [5]
+// sum[0-4] = sum[0-3] + [4]
+// sum[0-3] = sum[0-2] + [3]
+// sum[0-2] = sum[0-1] + [2]
+// sum[0-1] = sum[0] + [1]
+// sum[0] = [0]
+
+// rules:
+// if the array has size 1, then sum = element[0]
+// if the array has size 0, then sum = 0
+// otherwise, the 
 
 
+function recursiveSum(arr) {
+  if (arr.length == 0) {
+    return 0;
+  }
+  if(arr.length == 1) {
+    return arr[0]
+  }
+
+  let popped = arr.pop();
+  return recursiveSum(arr) + popped;
+  
+}
+
+console.log(recursiveSum([1,2,3,4,5,6,7,8,9,10]));
 
 
 
@@ -44,8 +100,8 @@
 
 // me ordering
 
-let finalResult = manager('CAPS');
-console.log("My result is:", finalResult);
+// let finalResult = manager('CAPS');
+// console.log("My result is:", finalResult);
 
 
 

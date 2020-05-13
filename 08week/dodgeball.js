@@ -1,5 +1,6 @@
 'use strict'
 
+// Array of people
 const arrOfPeople = [
   {
     id: 2,
@@ -52,6 +53,14 @@ const arrOfPeople = [
   },
 ]
 
+// Populate people list when 'List People' button is clicked
+
+// Make Player - When I click 'Make Player' button by a person,
+//  they should be removed from people array and added to players array
+
+// Set Team - When i click 'Make Blue' or 'Make Red', person should be
+//   removed from list of players and placed into list of their team color
+
 const listOfPlayers = []
 const blueTeam = []
 const redTeam = []
@@ -67,7 +76,8 @@ class player {
 }
 
 class Teammate extends player {
-  constructor(color,){
+  constructor(color, canThrowBall, canDodgeBall, hasPaid, isHealthy, yearsExp){
+    super(canThrowBall, canDodgeBall, hasPaid, isHealthy, yearsExp);
     this.color = color;
   }
 }
@@ -79,13 +89,15 @@ const listPeopleChoices = () => {
     const li = document.createElement("li")
     const button = document.createElement("button")
     button.innerHTML = "Make Player"
-    button.addEventListener('click', function() {makePlayer(person.id)} )
+    button.addEventListener('click', function() {makePlayer(person)} )
     li.appendChild(button)
     li.appendChild(document.createTextNode(person.name + " - " + person.skillSet))
     listElement.append(li)
   })
 }
 
-const makePlayer = (id) => {
-  console.log(`li ${id} was clicked!`)
+const makePlayer = (person) => {
+  console.log(`li ${person.id} was clicked!`)
+  let playerList = document.getElementById('players');
+  
 }
