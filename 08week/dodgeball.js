@@ -82,22 +82,44 @@ class Teammate extends player {
   }
 }
 
-
+// listPeopleChoices function is tied to button onclick in the HTML
+// maps each object in arrOfPeople with a list item, button, and innerText of li
+// then passes entire 'person' object to makePlayer function
 const listPeopleChoices = () => {
   const listElement = document.getElementById('people')
   arrOfPeople.map(person => {
     const li = document.createElement("li")
     const button = document.createElement("button")
     button.innerHTML = "Make Player"
-    button.addEventListener('click', function() {makePlayer(person)} )
     li.appendChild(button)
     li.appendChild(document.createTextNode(person.name + " - " + person.skillSet))
+    button.addEventListener('click', function() {
+      makePlayer(person)
+      li.parentElement.removeChild(li);
+    } )
     listElement.append(li)
   })
 }
 
 const makePlayer = (person) => {
   console.log(`li ${person.id} was clicked!`)
-  let playerList = document.getElementById('players');
+
+  // setting ul element ID 'Players' to variable
+  // setting variables to hold new elements: li, and button
+  const playerList = document.getElementById('players');
+  const li = document.createElement('li');
+  const span = document.createElement('span');
+  const redButton = document.createElement('button');
+  const blueButton = document.createElement('button');
+
+  playerList.appendChild(li);
+  li.appendChild(blueButton);
+  li.appendChild(redButton);
+  li.appendChild(span);
+  blueButton.innerText = 'Blue Team';
+  redButton.innerText = 'Red Team';
+  span.innerHTML = ` ${person.name} - ${person.age}`;
   
+
+  console.log(li.parentElement);
 }
