@@ -5,7 +5,11 @@ let splitSong;
 
 function songSearch() {
   let artist = prompt("Enter an artist");
-  let song = prompt("Enter a song name");
+  let song;
+  if (artist) {
+    song = prompt("Enter a song name");
+  }
+  
   splitArtist = artist.toLowerCase().trim();
   splitSong = song.toLowerCase().trim();
   for (let i=0; i<splitArtist.length; i++) {
@@ -74,7 +78,7 @@ function printLyrics(song) {
     }
   }
 
-  h4.innerHTML = `${splitSong}<br> by<br> ${splitArtist}<br>`;
+  h4.innerHTML = `${splitArtist} - ${splitSong}`;
   paragraph.innerHTML = `<br>${split}`;
   paragraph.style.padding = '30px';
 }
