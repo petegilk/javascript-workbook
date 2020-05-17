@@ -1,5 +1,6 @@
 'use strict'
 
+
 // Array of people
 const arrOfPeople = [
   {
@@ -165,6 +166,7 @@ function makeBluePlayer(person) {
   for (let i=0; i<blueTeam.length; i++) {
     span.innerHTML = `${blueTeam[i].name}`;
   }
+  span.style.color = 'Blue';
 }
 
 function makeRedPlayer(person) {
@@ -181,7 +183,15 @@ function makeRedPlayer(person) {
   for (let i=0; i<redTeam.length; i++) {
     span.innerHTML = `${redTeam[i].name}`;
   }
+  span.style.color = 'Red';
 }
 
 // Tests
 
+if (typeof describe === 'function') {
+  const assert = require('assert');
+  console.log('In testing environment');
+  
+} else {
+  console.log('Not in a testing environment');
+}
