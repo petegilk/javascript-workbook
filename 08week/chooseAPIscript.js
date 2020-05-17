@@ -9,7 +9,7 @@ function songSearch() {
   if (artist) {
     song = prompt("Enter a song name");
   }
-  
+
   splitArtist = artist.toLowerCase().trim();
   splitSong = song.toLowerCase().trim();
   for (let i=0; i<splitArtist.length; i++) {
@@ -47,6 +47,7 @@ function loadAPIdata(artist, song) {
 
     }).catch(function(error){
       console.log('Something went wrong:', error);
+      alert('Song not found');
     })
 }
 

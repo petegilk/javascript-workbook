@@ -66,7 +66,8 @@ const blueTeam = []
 const redTeam = []
 
 class player {
-  constructor(canThrowBall, canDodgeBall, hasPaid, isHealthy, yearsExp){
+  constructor(name, canThrowBall, canDodgeBall, hasPaid, isHealthy, yearsExp){
+    this.name = name;
     this.canThrowBall = canThrowBall;
     this.canDodgeBall = canDodgeBall;
     this.hasPaid = hasPaid;
@@ -76,8 +77,8 @@ class player {
 }
 
 class Teammate extends player {
-  constructor(color, canThrowBall, canDodgeBall, hasPaid, isHealthy, yearsExp){
-    super(canThrowBall, canDodgeBall, hasPaid, isHealthy, yearsExp);
+  constructor(color, name, canThrowBall, canDodgeBall, hasPaid, isHealthy, yearsExp){
+    super(name, canThrowBall, canDodgeBall, hasPaid, isHealthy, yearsExp);
     this.color = color;
   }
 }
@@ -112,14 +113,75 @@ const makePlayer = (person) => {
   const redButton = document.createElement('button');
   const blueButton = document.createElement('button');
 
+  // appending created elements to UL, and then to LI
+  // Setting inner text of buttons, and span element to show player name
   playerList.appendChild(li);
   li.appendChild(blueButton);
   li.appendChild(redButton);
   li.appendChild(span);
   blueButton.innerText = 'Blue Team';
   redButton.innerText = 'Red Team';
-  span.innerHTML = ` ${person.name} - ${person.age}`;
-  
 
-  console.log(li.parentElement);
+  let newPlayer = new player(person.name, 'yes', 'yes', 'yes', 'yes', 10);
+  listOfPlayers.push(newPlayer);
+  for (let i=0; i<listOfPlayers.length; i++) {
+    span.innerHTML = `${listOfPlayers[i].name}`;
+  }
+
+  // Adding click functionality to blue/red buttons.
+  // When button is clicked, function is called to make that person
+  //   either a blue or red player.
+  // LI is then removed from span element, and person is removed from players array
+  blueButton.addEventListener('click', function () {
+    makeBluePlayer(person);
+    li.parentElement.removeChild(li);
+    listOfPlayers.splice(newPlayer);
+  });
+
+  redButton.addEventListener('click', function () {
+    makeRedPlayer(person);
+    li.parentElement.removeChild(li);
+    listOfPlayers.splice(newPlayer);
+  });
 }
+
+
+
+// Functions to make person object a blue or red player
+// UL is selected from the HTML, new elements 'li, span' are created
+// person is passed to new instance of Teammate with their team color
+// li is appended to UL, span to LI, and innerHTML is set to player name
+function makeBluePlayer(person) {
+  console.log('Blue button was clicked', person);
+  const blueUL = document.getElementById('blue');
+  const li = document.createElement('li');
+  const span = document.createElement('span');
+
+  let newBlue = new Teammate('Blue', person.name, 'yes', 'yes', 'yes', 'yes', 10);
+  blueTeam.push(newBlue);
+
+  blueUL.appendChild(li);
+  li.appendChild(span);
+  for (let i=0; i<blueTeam.length; i++) {
+    span.innerHTML = `${blueTeam[i].name}`;
+  }
+}
+
+function makeRedPlayer(person) {
+  console.log('Red button was clicked', person);
+  const redUL = document.getElementById('red');
+  const li = document.createElement('li');
+  const span = document.createElement('span');
+
+  let newRed = new Teammate('Red', person.name, 'yes', 'yes', 'yes', 'yes', 10);
+  redTeam.push(newRed);
+
+  redUL.appendChild(li);
+  li.appendChild(span);
+  for (let i=0; i<redTeam.length; i++) {
+    span.innerHTML = `${redTeam[i].name}`;
+  }
+}
+
+// Tests
+
