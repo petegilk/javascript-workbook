@@ -60,7 +60,7 @@ function checkForWin() {
   if (horizontalWin() === true || verticalWin() === true || diagonalWin() === true) {
     return true;
   } 
-
+}
 
 function ticTacToe(row, column) {
   // Your code here
